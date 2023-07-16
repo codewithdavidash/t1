@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{{ html.title }}{% endblock title %}
+{% block content %}
+  <div class="px-4 py-12">
+    <div class="px-4">
+        <iframe class="mb-4 rounded-xl" height="250" width="319" src="{{ html.video }}">
+        </iframe>
+        <div class="w-[20rem] mb-10 menu-right mr-40 rounded-xl bg-gray-200 px-4 py-6">
+            <p class="font-semibold">Title: {{ html.title }}</p>
+            {% if html.description %}
+            <p class="font-semibold">Description: {{ html.description }}</p>
+            {% endif %}
+            <p class="font-semibold">Created_at: {{ html.created_at | timesince }}</p>
+        </div>
+    </div>
+  </div>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %}Add Videos{% endblock title %}
+
+{% block content %}
+<div class="px-12 mt-10 mb-40 py-12 grid grid-cols-4 gap-4">
+    <a href="{% url 'videos:html' %}"><button class=" hover:animate-bounce">
+        <img src="{% static 'button_images/html.jpg' %}" class="h-40 rounded-full">
+    </button></a>
+    <a href="{% url 'videos:tailwind' %}"><button class=" hover:animate-bounce">
+        <img src="{% static 'button_images/tailwindcss.jpg' %}" class="h-40 rounded-full">
+    </button></a>
+    <a href="{% url 'videos:python' %}"><button class="hover:animate-bounce">
+        <img src="{% static 'button_images/python.jpg' %}" class="h-40 rounded-full">
+    </button></a>
+    <a href="{% url 'videos:django' %}"><button class=" hover:animate-bounce">
+        <img src="{% static 'button_images/django.jpg' %}">
+    </button></a>
+</div>  
+{% endblock content %}

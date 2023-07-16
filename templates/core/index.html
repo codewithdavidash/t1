@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title %}
+{% block content %}
+<div class="px-6 py-6 bg-gray-200 mt-4">
+    <p class="text-center font-semibold mb-6 text-lg">HTML Videos Section</p>
+    <div class="grid grid-cols-3 gap-3">
+        {% for htmls in html %}
+        <div class="px-6 shadow-xl">
+            <iframe class="mb-4" src="{{ htmls.video }}">
+            </iframe>
+            <a href="{% url 'videos:detail' htmls.id %}" class="font-semibold hover:text-purple-700 text-purple-500">{{ htmls.title }}</a>
+        </div>
+            {% endfor %}
+    </div>
+</div>
+<div class="px-6 py-6 bg-gray-200 mt-4">
+    <p class="text-center font-semibold mb-6 text-lg">TailWindCSS Videos Section</p>
+    <div class="grid grid-cols-3 gap-10">
+        {% for tails in tailwindcss %}
+        <a href=""><iframe class="" src="{{ tails.video }}">
+        </iframe>  
+        <p class="mt-3 font-semibold underline hover:text-purple-700">{{ tails.title }}</p>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+<div class="px-6 py-6 bg-gray-200 mt-4">
+    <p class="text-center font-semibold mb-6 text-lg">Python Videos Section</p>
+    <div class="grid grid-cols-3 gap-10">
+        {% for pythons in python %}
+        <iframe class="w-5/6" src="{{ pythons.video }}">
+        </iframe>
+        {% endfor %}
+    </div>
+</div>
+<div class="px-6 py-6 bg-gray-200 mt-4">
+    <p class="text-center font-semibold mb-6 text-lg">Django Videos Section</p>
+    <div class="grid grid-cols-3 gap-10">
+        {% for djangos in django %}
+        <iframe class="w-5/6" src="{{ djangos.video }}">
+        </iframe>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

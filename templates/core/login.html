@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Sign In Your Account{% endblock title %}
+{% block content %} <br><br><br>
+<div class="w-3/4 mt-14 my-6 mx-auto p-6 bg-gray-200 rounded-xl mb-20">
+    <form action="." method="post">
+        {% csrf_token %}
+        <p class="text-xl mb-6">Signup</p>
+        <label>Username</label><br>
+        {{ form.username }} <br>
+        <label>Password</label><br>
+        {{ form.password }} <br>
+        {% if form.errors or form.non_field_errors %}
+        <div class="mb-3 p-6 bg-red-100 rounded-xl">
+            {% for field in form %}
+            {{ field.errors }}
+            {% endfor %}
+            {{ form.non_field_errors }}
+        </div>
+      {% endif %}
+        <button type="submit" class="mt-4 bg-purple-700 text-white p-2 rounded-md hover:bg-purple-900">Sign In</button>
+    </form><br><br><br><br>
+</div>
+{% endblock content %}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %} - Dave Tech</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div class="px-4 py-6 flex border justify-between items-center border-b">
+    <a href="{% url 'core:index' %}" class="text-xl"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+      </svg>
+      Dave Tech</a>
+    <div class="">
+      <div class="menu-right">
+        {% if request.user.is_authenticated %}
+        <button type="submit">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+          </svg> 
+                   
+        </button>
+        {% else %}
+        <a href="{% url 'core:login' %}" class="bg-purple-700 text-white p-2 rounded-md hover:bg-purple-900">Log In</a>
+        <a href="{% url 'core:signup' %}" class="ml-2 bg-gray-700 text-white p-2 rounded-md hover:bg-gray-900">Sign Up</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+    {% block content %}
+    {% endblock content %}
+    <footer class="bg-gray-900 flex justify-between px-5 py-10">
+      <div class="space-y-4">  
+      <p class="text-gray-600">About</p>
+            <p class="text-gray-600 text-md"> 2023 &reg; Project Managers. All rights reserved</p>
+        </div>
+        <div class="space-y-4 space-x-6 mr-40">
+            <p class="text-gray-600 mb-3">Menu</p>
+            <ul>      {% if request.user.is_authenticated %}
+      {% if request.user.is_staff %}
+                <li style="list-style: circle;" class="text-gray-600 text-md"><a href="{% url 'videos:add' %}">Add Videos</a></li>
+                <li style="list-style: circle;" class="text-gray-600 text-md"><a href="">About Us</a></li>
+                <li style="list-style: circle;" class="text-gray-600 text-md"><a href="">Contact Us</a></li>
+                <li style="list-style: circle;" class="text-gray-600 text-md">  <a href="{% url 'core:logout' %}">Logout</a><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+  </svg>    
+  {% else %}
+                <li style="list-style: circle;" class="text-gray-600 text-md"><a href="">About Us</a></li>
+                <li style="list-style: circle;" class="text-gray-600 text-md"><a href="">Contact Us</a></li>
+                <li style="list-style: circle;" class="text-gray-600 text-md">  <a href="{% url 'core:logout' %}">Logout</a><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+  </svg>      
+  {% endif %}
+           {% else %}
+                <li style="list-style: circle;" class="text-gray-600 text-md"><a href="">About Us</a></li>
+                <li style="list-style: circle;" class="text-gray-600 text-md"><a href="">Contact Us</a></li>
+                <li style="list-style: circle;" class="text-gray-600 text-md"><a href="">Term of Use</a></li>
+           {% endif %}
+        </div>
+    </footer>
+</body>
+</html>
